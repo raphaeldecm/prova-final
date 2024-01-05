@@ -1,0 +1,51 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %}
+
+{% load adminlte_helpers %}
+
+{% block logo_text %}
+  <span class="brand-text font-weight-light">Library</span>
+{% endblock logo_text %}
+{% block user_panel %}
+  <!-- Sidebar user panel (optional) -->
+  {% if not request.user.is_anonymous %}
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="{% avatar_url size=90 %}"
+             class="img-circle elevation-2"
+             alt="User Image" />
+      </div>
+      <div class="info">
+        <a href="{% url 'home' %}" class="d-block">{% firstof request.user.name request.user.username %}</a>
+      </div>
+    </div>
+  {% endif %}
+{% endblock user_panel %}
+{% block nav_heading %}
+  Menu Principal
+{% endblock nav_heading %}
+{% block nav_links %}
+  <li class="nav-item">
+    <a href="{% url 'home' %}" class="nav-link">
+      <i class="nav-icon fas fa-home" aria-hidden="true"></i>
+      <p>Página Inicial</p>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-users" aria-hidden="true"></i>
+      <p>Autores</p>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-book" aria-hidden="true"></i>
+      <p>Livros</p>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-exchange-alt" aria-hidden="true"></i>
+      <p>Empréstimos</p>
+    </a>
+  </li>
+{% endblock nav_links %}
