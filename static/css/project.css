@@ -1,0 +1,4 @@
+td a i {
+    color: var(--bs-link-color);
+    text-decoration: none !important;
+}

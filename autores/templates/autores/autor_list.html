@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block page_name %}
+  Lista de Autores
+{% endblock page_name %}
+
+{% block content %}
+<div class="card card-primary m-3">
+    <div class="card-header">
+      <h3 class="card-title">Autores Cadastrados</h3>
+    </div>
+    <div class="card-body p-0" style="overflow-x: auto">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Nascimento</th>
+            <th class="text-center">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for object in object_list %}
+            <tr>
+              <td>{{ object.pk }}</td>
+              <td>{{ object.nome }}</td>
+              <td>{{ object.data_nascimento }}</td>
+              <td class="text-center">
+                <a href="{% url 'autores:detail' object.pk %}"><i class="fas fa-eye" aria-hidden="true"></i></a>
+                <a class="mx-1"
+                   href="{% url 'autores:delete' object.pk %}"
+                   type="button"
+                   aria-label="editar"
+                   title="editar">
+                  <i class="fas fa-edit" aria-hidden="true"></i></a>
+                <a type="button"
+                   data-bs-toggle="modal"
+                   data-bs-target="#deleteModal-{{ object.pk }}"
+                   aria-label="excluir"
+                   title="excluir">
+                  <i class="fas fa-trash" aria-hidden="true"></i></a>
+                {% include "autores/autor_confirm_delete.html" with delete_url="autores:delete" %}
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="4">
+                <p>Não existem séries cadastradas.</p>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if object_list %}
+      {% include 'adminlte/lib/_pagination.html' %}
+    {% endif %}
+  </div>
+  
+  <div class="row justify-content-between m-3">
+    <div class="col-lg-4 col-md-6 col-12 m-3">
+      <a type="button" class="btn btn-secondary" href={{ link_back }}>
+        <i class="fas fa-chevron-left mr-1" aria-hidden="true"></i>
+      Voltar</a>
+    </div>
+    <div class="col-lg-2 col-md-3 col-12 m-3">
+        <a class="btn btn-primary" href="{% url 'autores:create' %}">Cadastrar</a>
+    </div>
+  </div>
+  
+{% endblock content %}
