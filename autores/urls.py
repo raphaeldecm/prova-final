@@ -1,6 +1,5 @@
-from django.urls import path
-
 from autores import views
+from django.urls import path
 
 app_name = "autores"
 urlpatterns = [

@@ -1,1 +1,52 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block page_name %}
+  Detalhe do Autor
+{% endblock page_name %}
+
+{% block content %}
+  <div class="card card-primary m-3">
+    <div class="card-header">
+      <h3 class="card-title">Dados do Autor</h3>
+    </div>
+    <div class="card-body p-0">
+      <div class="row align-items-center m-3">
+        <div class="col-md-2 col-sm-12">
+          <strong>Código:</strong>
+        </div>
+        <div id="codigo" class="col-md-10 col-sm-12">{{ object.pk }}</div>
+      </div>
+      <div class="row align-items-center m-3">
+        <div class="col-md-2 col-sm-12">
+          <strong>Nome:</strong>
+        </div>
+        <div id="name" class="col-md-10 col-sm-12">{{ object.nome }}</div>
+      </div>
+      <div class="row align-items-center m-3">
+        <div class="col-md-2 col-sm-12">
+          <strong>Nascimento:</strong>
+        </div>
+        <div id="teacher" class="col-md-10 col-sm-12">{{ object.data_nascimento }}</div>
+      </div>
+      <div class="row align-items-center m-3">
+        <div class="col-md-2 col-sm-12">
+          <strong>Biografia:</strong>
+        </div>
+        <div id="shift" class="col-md-10 col-sm-12">{{ object.biografia }}</div>
+      </div>
+      <div class="row justify-content-between m-3">
+        <div class="col-lg-4 col-md-6 col-12 m-3">
+          <a type="button"
+             class="btn btn-secondary"
+             href="{% url 'autores:list' %}"> <i class="fas fa-chevron-left mr-1" aria-hidden="true"></i>Voltar</a>
+        </div>
+        <div class="col-lg-2 col-md-3 col-12 m-3">
+          <a class="btn btn-primary"
+             href="{% url 'autores:update' object.pk %}">Editar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

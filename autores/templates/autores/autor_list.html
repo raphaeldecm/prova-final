@@ -28,7 +28,7 @@
               <td class="text-center">
                 <a href="{% url 'autores:detail' object.pk %}"><i class="fas fa-eye" aria-hidden="true"></i></a>
                 <a class="mx-1"
-                   href="{% url 'autores:delete' object.pk %}"
+                   href="{% url 'autores:update' object.pk %}"
                    type="button"
                    aria-label="editar"
                    title="editar">
@@ -56,7 +56,6 @@
       {% include 'adminlte/lib/_pagination.html' %}
     {% endif %}
   </div>
-  
   <div class="row justify-content-between m-3">
     <div class="col-lg-4 col-md-6 col-12 m-3">
       <a type="button" class="btn btn-secondary" href={{ link_back }}>
