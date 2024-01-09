@@ -20,5 +20,5 @@ class AutorForms(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         instance = kwargs.get('instance')
-        if instance.data_nascimento:
+        if instance is not None:
             self.initial['data_nascimento'] = instance.data_nascimento.strftime('%Y-%m-%d') # noqa
